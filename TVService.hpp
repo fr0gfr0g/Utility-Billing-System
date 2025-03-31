@@ -17,8 +17,10 @@ public:
 		double bill = InternetService::calculatedBill(dataUsedGB);
 
 		if (hasPremiumChannel) {
-			charge += premiumChannelSurcharge;
+			bill += premiumChannelSurcharge;
 		}
+
+		return bill;
 	}
 
 	// Getters
