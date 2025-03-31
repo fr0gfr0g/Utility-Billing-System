@@ -46,5 +46,4 @@ public:
 	// Getter methods
 	double getDataCap() const { return dataCapGB; }
 	double getOverageFee() const { return overageFeePerGB; }
-
 };
