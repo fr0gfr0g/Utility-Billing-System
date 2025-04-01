@@ -36,7 +36,7 @@ public:
 
 	// Getters
 	int getChannelCount() const { return channelCount; }
-	bool getHasPremiumChannel() const { return hasPremium; }
+	bool getHasPremiumChannel() const { return hasPremiumChannel; }
 };
 
 #endif // TV_SERVICE_HPP
