@@ -12,24 +12,13 @@ private:
 	double premiumChannelSurcharge = 5.00;
 
 public:
-	TVService(int pID, double base, double meter, double dataCap, double overageFee, int channels, bool premium)
+	TVService(int pID, double base, double meter, int channels, bool premium)
 		: InternetService("TV Service", pID, base, meter), channelCount(channels), hasPremiumChannel(premium) {}
 
-	//commented out to test the override method
-	/*double calculateBill(double dataUsedGB) override {
-		double bill = InternetService::calculatedBill(dataUsedGB);
-
+	double calculateBill() {
+		double bill = baseRate + (meterRate * channelCount);
 		if (hasPremiumChannel) {
 			bill += premiumChannelSurcharge;
-		}
-
-		return bill;
-	}*/
-
-	double calculateBill() {
-		double bill = baseRate;
-		if (hasPremiumChannel) {
-			bill += channelCount * premiumChannelSurcharge;
 		}
 		return bill;
 	}

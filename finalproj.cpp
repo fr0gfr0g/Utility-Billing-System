@@ -27,6 +27,8 @@ int main() {
     MobilePhoneService mobile1(3, 25.0, 0.10, 500, 0.05); // Added Mobile Phone Service for MobileConnect
     MobilePhoneService mobile2(4, 30.0, 0.08, 700, 0.04); // Added Mobile Phone Service for GeckoMobile
     InternetService internet1(5, 40.0, 1.5, 200, 3.0); // Added for CodeG.Co
+    HomePhoneService home1(5, 20.0, 0.02, true, 0.05); // Added for CodeG.Co
+    TVService tv1(5, 30.0, 0.03, 100, true); // Added for CodeG.Co
 
     // Assign services to providers
     provider1.addService(&gas1);
@@ -34,6 +36,8 @@ int main() {
     provider3.addService(&mobile1);
     provider4.addService(&mobile2);
     provider5.addService(&internet1);
+    provider5.addService(&home1);
+    provider5.addService(&tv1);
 
     // Create a map to store customers by ID for lookup
     map<int, Customer*> customerMap;
