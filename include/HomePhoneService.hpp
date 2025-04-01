@@ -23,17 +23,12 @@ public:
 		return bill;
 	}*/
 
-	double calculateBill(double usage, int longDistanceMinutes = 0) override {
-		double bill = baseRate + (meterRate * usage);
+	double calculateBill(double longDistanceMinutes = 0) override {
+		double bill = baseRate;
 		if (longDistanceMinutes > 0) {
 			bill += longDistanceMinutes * longDistanceRate;
 		}
 		return bill;
-	}
-
-	// Override base calculateBill
-	double calculateBill(double dataUsedGB) override {
-		return calculateBill(dataUsedGB, 0);
 	}
 
 	// Getters

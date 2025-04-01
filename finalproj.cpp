@@ -7,6 +7,8 @@
 #include "include/MobilePhoneService.hpp"
 #include "include/Provider.hpp"
 #include "include/Customer.hpp"
+#include "include/HomePhoneService.hpp"
+#include "include/TVService.hpp"
 
 using namespace std;
 

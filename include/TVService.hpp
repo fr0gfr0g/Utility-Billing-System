@@ -9,7 +9,7 @@ class TVService : public InternetService {
 private:
 	int channelCount;
 	bool hasPremiumChannel;
-	double premiumChannelSurcharge = 5.00
+	double premiumChannelSurcharge = 5.00;
 
 public:
 	TVService(int pID, double base, double meter, double dataCap, double overageFee, int channels, bool premium)
@@ -26,7 +26,7 @@ public:
 		return bill;
 	}*/
 
-	double calculateBill() override {
+	double calculateBill() {
 		double bill = baseRate;
 		if (hasPremiumChannel) {
 			bill += channelCount * premiumChannelSurcharge;
@@ -36,7 +36,7 @@ public:
 
 	// Getters
 	int getChannelCount() const { return channelCount; }
-	bool hasPremium() const { return hasPremium; }
+	bool getHasPremiumChannel() const { return hasPremium; }
 };
 
 #endif // TV_SERVICE_HPP
