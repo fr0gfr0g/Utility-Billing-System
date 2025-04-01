@@ -5,15 +5,20 @@
 #include <vector>
 #include <string>
 
+using namespace std;
+
 class InternetService : public UtilityService {
 protected:
     double dataCapGB;  // Data usage cap in GB
     double overageFeePerGB;  // Overcharge fee for exceeding the data cap
-    std::vector<std::string> bundledServices;  // Services bundled with the Internet
+    vector<string> bundledServices;  // Services bundled with the Internet
 
 public:
     InternetService(int pID, double base, double meter, double dataCap, double overageFee)
         : UtilityService("Internet", pID, base, meter), dataCapGB(dataCap), overageFeePerGB(overageFee) {}
+
+    InternetService(const char* name, int pID, double base, double meter)
+        : UtilityService(name, pID, base, meter), dataCapGB(0.0), overageFeePerGB(0.0) {}
 
     virtual ~InternetService() {}
 
@@ -27,11 +32,11 @@ public:
     }
 
     // Add bundled services (e.g., streaming services)
-    void addBundledService(const std::string& serviceName) {
+    void addBundledService(const string& serviceName) {
         bundledServices.push_back(serviceName);
     }
 
-    bool hasBundledService(const std::string& serviceName) const {
+    bool hasBundledService(const string& serviceName) const {
         for (const auto& service : bundledServices) {
             if (service == serviceName) return true;
         }

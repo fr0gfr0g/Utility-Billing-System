@@ -1,11 +1,10 @@
-// UtilityService.hpp
-
 #ifndef UTILITY_SERVICE_HPP
 #define UTILITY_SERVICE_HPP
 
 #include <iostream>
 #include <string>
 #include <vector>
+
 using namespace std;
 
 // BASE CLASS for UtilityService///
@@ -20,6 +19,9 @@ public:
     // Constructor with parameters for service name, provider ID, base rate, and meter rate
     UtilityService(string name, int pID, double base, double meter)
         : serviceName(name), providerID(pID), baseRate(base), meterRate(meter) {}
+
+	//Destructor
+	virtual ~UtilityService() {}
 
     // Pure virtual function for billing (must be implemented by derived classes)
     virtual double calculateBill(double usage) = 0;

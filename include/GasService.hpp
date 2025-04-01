@@ -1,4 +1,6 @@
-// GasService.hpp
+#ifndef GAS_SERVICE_HPP
+#define GAS_SERVICE_HPP
+
 #include "UtilityService.hpp"
 
 using namespace std;
@@ -14,3 +16,5 @@ public:
         return baseRate + (meterRate * usage);
     }
 };
+
+#endif // GAS_SERVICE_HPP

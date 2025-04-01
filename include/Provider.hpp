@@ -5,14 +5,16 @@
 #include <vector>
 #include "UtilityService.hpp"
 
+using namespace std;
+
 class Provider {
 public:
     int providerID;
-    std::string providerName;
-    std::vector<UtilityService*> services;
+    string providerName;
+    vector<UtilityService*> services;
 
     // Constructor definition
-    Provider(int id, std::string name) : providerID(id), providerName(name) {}
+    Provider(int id, string name) : providerID(id), providerName(name) {}
 
     // Method to add service
     void addService(UtilityService* service) {
@@ -21,11 +23,14 @@ public:
 
     // Method to display provider details
     void displayProviderDetails() {
-        std::cout << "Provider ID: " << providerID << ", Name: " << providerName << std::endl;
+        cout << "Provider ID: " << providerID << ", Name: " << providerName << endl;
         for (auto service : services) {
             service->displayServiceDetails();
         }
     }
+
+    //Getter
+	vector<UtilityService*> getServices() const { return services; }
 };
 
 #endif // PROVIDER_HPP

@@ -6,36 +6,39 @@
 #include <map>
 #include "UtilityService.hpp"
 
+using namespace std;
+
 class Customer {
-public:
+private:
     int customerID;
-    std::string customerName;
-    std::vector<std::pair<UtilityService*, double>> subscribedServices;
+    string customerName;
+    vector<pair<UtilityService*, double>> subscribedServices;
     bool isPaymentOverdue = false;
 
-    Customer(int id, std::string name) : customerID(id), customerName(name) {}
+public:
+    Customer(int id, string name) : customerID(id), customerName(name) {}
 
     void addSubscription(UtilityService* service, double usage) {
         subscribedServices.push_back({service, usage});
-        std::cout << "Subscription to " << service->getServiceName() << " added with " << usage << " units." << std::endl;
+        cout << "Subscription to " << service->getServiceName() << " added with " << usage << " units." << endl;
     }
 
     void generateBill() {
-        std::cout << "\nBill for " << customerName << " (ID: " << customerID << ")" << std::endl;
+        cout << "\nBill for " << customerName << " (ID: " << customerID << ")" << endl;
         double totalBill = 0;
         for (auto& entry : subscribedServices) {
             double bill = entry.first->calculateBill(entry.second);
             totalBill += bill;
-            std::cout << entry.first->getServiceName() << " Usage: " << entry.second << " units, Bill: $" << bill << std::endl;
+            cout << entry.first->getServiceName() << " Usage: " << entry.second << " units, Bill: $" << bill << endl;
         }
-        std::cout << "Total Bill: $" << totalBill << std::endl;
+        cout << "Total Bill: $" << totalBill << endl;
     }
 
     void checkOverdue(double overdueLimit = 30) {
         if (isPaymentOverdue) {
-            std::cout << "Customer " << customerName << " (ID: " << customerID << ") has overdue payment!" << std::endl;
+            cout << "Customer " << customerName << " (ID: " << customerID << ") has overdue payment!" << endl;
         } else {
-            std::cout << "Customer " << customerName << " (ID: " << customerID << ") is up to date with payments." << std::endl;
+            cout << "Customer " << customerName << " (ID: " << customerID << ") is up to date with payments." << endl;
         }
     }
 
@@ -44,9 +47,9 @@ public:
     }
 
     void displaySubscriptions() {
-        std::cout << "Subscribed services for " << customerName << " (ID: " << customerID << "):" << std::endl;
+        cout << "Subscribed services for " << customerName << " (ID: " << customerID << "):" << endl;
         for (auto& entry : subscribedServices) {
-            std::cout << entry.first->getServiceName() << " - " << entry.second << " units" << std::endl;
+            cout << entry.first->getServiceName() << " - " << entry.second << " units" << endl;
         }
     }
 };

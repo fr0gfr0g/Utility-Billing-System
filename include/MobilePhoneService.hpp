@@ -3,14 +3,14 @@
 
 #include "UtilityService.hpp"
 
-class MobilePhoneService : public UtilityService {
+class MobilePhoneService : public InternetService {
 protected:
     double callMinutesCap;
     double overageChargePerMinute;
 
 public:
     MobilePhoneService(int pID, double base, double meter, double cap, double overage)
-        : UtilityService("Mobile Phone", pID, base, meter), callMinutesCap(cap), overageChargePerMinute(overage) {}
+        : InternetService("Mobile Phone", pID, base, meter), callMinutesCap(cap), overageChargePerMinute(overage) {}
 
     double calculateBill(double usage) override {
         double baseCharge = baseRate + (meterRate * usage);
@@ -19,7 +19,10 @@ public:
         }
         return baseCharge;
     }
+
+    // Getters
+    double getOverageChargePerMinute() const { return overageChargePerMinute; }
+    double getCallMinutesCap() const { return callMinutesCap; }
 };
 
 #endif // MOBILE_PHONE_SERVICE_HPP
-
