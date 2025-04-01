@@ -9,13 +9,12 @@
 using namespace std;
 
 class Customer {
-private:
+public:
     int customerID;
     string customerName;
     vector<pair<UtilityService*, double>> subscribedServices;
     bool isPaymentOverdue = false;
 
-public:
     Customer(int id, string name) : customerID(id), customerName(name) {}
 
     void addSubscription(UtilityService* service, double usage) {
@@ -52,6 +51,12 @@ public:
             cout << entry.first->getServiceName() << " - " << entry.second << " units" << endl;
         }
     }
+
+    // Getters
+	int getCustomerID() const { return customerID; }
+	string getCustomerName() const { return customerName; }
+	vector<pair<UtilityService*, double>> getSubscribedServices() const { return subscribedServices; }
+	bool getIsPaymentOverdue() const { return isPaymentOverdue; }
 };
 
 #endif // CUSTOMER_HPP
